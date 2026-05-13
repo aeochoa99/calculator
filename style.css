@@ -13,8 +13,10 @@ body {
 }
 
 .calculator-container {
+    display: flex;
+    flex-direction: column;
     width: 500px;
-    height: 700px;
+    height: 600px;
     border: 2px solid black;
     background-color: rgb(65, 65, 65);
     padding: 5px;
@@ -22,6 +24,41 @@ body {
 
 .input-output-container {
     width: 100%;
-    height: 20%;
+    height: 25%;
     background-color: rgb(96, 96, 96);
+}
+
+.input-keys {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.clear-delete, .row-1,
+.row-2, .row-3,
+.row-4 {
+    display: flex;
+    gap: 10px;
+}
+
+.key {
+    background-color: rgb(173, 173, 173);
+}
+
+#clear, #delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 75px;
+}
+
+.nums-operators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 75px;
 }
