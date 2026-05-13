@@ -17,4 +17,11 @@ body {
     height: 700px;
     border: 2px solid black;
     background-color: rgb(65, 65, 65);
+    padding: 5px;
+}
+
+.input-output-container {
+    width: 100%;
+    height: 20%;
+    background-color: rgb(96, 96, 96);
 }
