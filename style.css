@@ -44,7 +44,15 @@ body {
 }
 
 .key {
-    background-color: rgb(173, 173, 173);
+    background-color: rgb(134, 134, 134);
+}
+
+.key:hover {
+    background-color: rgb(162, 162, 162);
+}
+
+.key:active {
+    background-color: rgb(204, 204, 204);
 }
 
 #clear, #delete {
