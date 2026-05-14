@@ -19,3 +19,11 @@ function checkIfOperator(key) {
         return true;
     }
 }
+
+function deleteFromLastUpdated() {
+    if (expression.lastUpdated === "constant1") {
+        expression.constant1 = expression.constant1.slice(0,-1);
+    } else {
+        expression.constant2 = expression.constant2.slice(0,-1);
+    }
+}
