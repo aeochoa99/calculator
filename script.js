@@ -65,3 +65,11 @@ function isDeleteKey(key) {
         return false;
     }
 }
+
+function isDecimalKey(key) {
+    if (key === ".") {
+        return true;
+    } else {
+        return false;
+    }
+}
