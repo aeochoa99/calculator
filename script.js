@@ -35,3 +35,11 @@ function checkIfNumber(key) {
         return false;
     }
 }
+
+function isOperatorMissing() {
+    if (expression.operator === "") {
+        return true;
+    } else {
+        return false;
+    }
+}
