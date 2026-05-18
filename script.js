@@ -46,6 +46,14 @@ function isOperatorMissing() {
     }
 }
 
+function hasResult() {
+    if (expression.result != "") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function updateOperator(key) {
     expression.operator += key;
 }
