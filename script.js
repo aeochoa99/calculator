@@ -55,6 +55,10 @@ function updateConstant1(key) {
     expression.lastUpdated = "constant1";
 }
 
+function setConstant1() {
+    expression.constant1 = expression.result;
+}
+
 function updateConstant2(key) {
     expression.constant2 += key;
     expression.lastUpdated = "constant2";
