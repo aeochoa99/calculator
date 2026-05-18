@@ -7,7 +7,7 @@ const expression = {
     operator: "",
     constant2: "",
     lastUpdated: "",
-    result: 0
+    result: ""
 }
 
 const inputOutputContainer = document.querySelector(".input-output-container");
@@ -102,4 +102,28 @@ function enableOperatorKeys() {
     operatorKeys.forEach(key => {
         key.disabled = false;
     })
+}
+
+function compute(constant1, operator, constant2) {
+    let num1 = +constant1;
+    let num2 = +constant2;
+    let result = 0;
+
+    if (operator === "+") {
+        result = num1 + num2;
+        expression.result = String(result);
+        return expression.result;
+    } else if (operator === "-") {
+        result = num1 - num2;
+        expression.result = String(result);
+        return expression.result;
+    } else if (operator === "*") {
+        result = num1 * num2;
+        expression.result = String(result);
+        return expression.result;
+    } else if (operator === "/") {
+        result = num1 / num2;
+        expression.result = String(result);
+        return expression.result;
+    }
 }
