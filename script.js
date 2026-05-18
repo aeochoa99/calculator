@@ -44,6 +44,10 @@ function isOperatorMissing() {
     }
 }
 
+function updateOperator(key) {
+    expression.operator += key;
+}
+
 function updateConstant1(key) {
     expression.constant1 += key;
     expression.lastUpdated = "constant1";
