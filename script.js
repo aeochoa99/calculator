@@ -57,3 +57,11 @@ function updateConstant2(key) {
     expression.constant2 += key;
     expression.lastUpdated = "constant2";
 }
+
+function isDeleteKey(key) {
+    if (key === "DELETE") {
+        return true;
+    } else {
+        return false;
+    }
+}
