@@ -76,6 +76,14 @@ function isDecimalKey(key) {
     }
 }
 
+function isEqualsKey(key) {
+    if (key === "=") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function getLastUpdated() {
     if (expression.lastUpdated === "constant1") {
         return "constant1";
