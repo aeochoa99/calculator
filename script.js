@@ -1,4 +1,5 @@
 const inputKeys = document.querySelectorAll(".key");
+const decimalKey = document.querySelector("#decimal");
 
 const expression = {
     constant1: "",
@@ -80,4 +81,12 @@ function getLastUpdated() {
     } else {
         return "constant2";
     }
+}
+
+function disableDecimalKey() {
+    decimalKey.disabled = true;
+}
+
+function enableDecimalKey() {
+    decimalKey.disabled = false;
 }
