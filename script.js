@@ -1,5 +1,6 @@
 const inputKeys = document.querySelectorAll(".key");
 const decimalKey = document.querySelector("#decimal");
+const operatorKeys = document.querySelectorAll("#operator");
 
 const expression = {
     constant1: "",
@@ -89,4 +90,16 @@ function disableDecimalKey() {
 
 function enableDecimalKey() {
     decimalKey.disabled = false;
+}
+
+function disableOperatorKeys() {
+    operatorKeys.forEach(key => {
+        key.disabled = true;
+    })
+}
+
+function enableOperatorKeys() {
+    operatorKeys.forEach(key => {
+        key.disabled = false;
+    })
 }
