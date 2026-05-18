@@ -43,3 +43,13 @@ function isOperatorMissing() {
         return false;
     }
 }
+
+function updateConstant1(key) {
+    expression.constant1 += key;
+    expression.lastUpdated = "constant1";
+}
+
+function updateConstant2(key) {
+    expression.constant2 += key;
+    expression.lastUpdated = "constant2";
+}
