@@ -10,7 +10,7 @@ const expression = {
     result: ""
 }
 
-const inputOutputContainer = document.querySelector(".input-output-container");
+let inputOutputContainer = document.querySelector(".input-output-container");
 
 function checkIfOperator(key) {
     if (key === "/" ||
