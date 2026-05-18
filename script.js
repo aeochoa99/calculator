@@ -27,3 +27,11 @@ function deleteFromLastUpdated() {
         expression.constant2 = expression.constant2.slice(0,-1);
     }
 }
+
+function checkIfNumber(key) {
+    if (!isNaN(parseInt(key))) {
+        return true;
+    } else {
+        return false;
+    }
+}
