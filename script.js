@@ -73,3 +73,11 @@ function isDecimalKey(key) {
         return false;
     }
 }
+
+function getLastUpdated() {
+    if (expression.lastUpdated === "constant1") {
+        return "constant1";
+    } else {
+        return "constant2";
+    }
+}
