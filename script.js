@@ -2,10 +2,13 @@ const inputKeys = document.querySelectorAll(".key");
 inputKeys.forEach(key => {
     key.addEventListener("click", () => {
         const keyInfo = key.textContent;
-        if (hasResult()) {
+        if (isClearKey(keyInfo)) {
+            clearExpression();
+        } else if (hasResult()) {
             if (checkIfOperator(keyInfo)) {
                 setConstant1();
                 updateOperator(keyInfo);
+                enableDecimalKey();
                 expression.result = "";
                 expression.constant2 = "";
             } else {
@@ -20,21 +23,22 @@ inputKeys.forEach(key => {
             }
         } else if (checkIfOperator(keyInfo)) {
             updateOperator(keyInfo);
-            decimalKey.disabled = false;
+            enableDecimalKey();
+            disableOperatorKeys();
         } else if (isDeleteKey(keyInfo)) {
             deleteFromLastUpdated();
         } else if (isDecimalKey(keyInfo)) {
-            if (getLastUpdated() === "constant1") {
+            if (isOperatorMissing()) {
                 updateConstant1(keyInfo);
                 disableDecimalKey();
             } else {
                 updateConstant2(keyInfo);
                 disableDecimalKey();
             }
-        } else if (isClearKey(keyInfo)) {
-            clearExpression();
         } else if (isEqualsKey(keyInfo)) {
             compute(expression.constant1, expression.operator, expression.constant2);
+            enableDecimalKey();
+            enableOperatorKeys();
         }
     })
 })
@@ -97,11 +101,13 @@ function hasResult() {
 
 function updateOperator(key) {
     expression.operator = key;
+    inputOutputContainer.textContent += expression.operator;
 }
 
 function updateConstant1(key) {
     expression.constant1 += key;
     expression.lastUpdated = "constant1";
+    inputOutputContainer.textContent = expression.constant1;
 }
 
 function setConstant1() {
@@ -111,6 +117,7 @@ function setConstant1() {
 function updateConstant2(key) {
     expression.constant2 += key;
     expression.lastUpdated = "constant2";
+    inputOutputContainer.textContent = expression.constant2;
 }
 
 function isDeleteKey(key) {
@@ -179,6 +186,7 @@ function clearExpression() {
     expression.operator = "";
     expression.lastUpdated = "";
     expression.result = "";
+    inputOutputContainer.textContent = "";
 }
 
 function compute(constant1, operator, constant2) {
@@ -189,18 +197,18 @@ function compute(constant1, operator, constant2) {
     if (operator === "+") {
         result = num1 + num2;
         expression.result = String(result);
-        return expression.result;
+        inputOutputContainer.textContent = expression.result;
     } else if (operator === "-") {
         result = num1 - num2;
         expression.result = String(result);
-        return expression.result;
+        inputOutputContainer.textContent = expression.result;
     } else if (operator === "*") {
         result = num1 * num2;
         expression.result = String(result);
-        return expression.result;
+        inputOutputContainer.textContent = expression.result;
     } else if (operator === "/") {
         result = num1 / num2;
         expression.result = String(result);
-        return expression.result;
+        inputOutputContainer.textContent = expression.result;
     }
 }
