@@ -124,6 +124,14 @@ function enableOperatorKeys() {
     })
 }
 
+function clearExpression() {
+    expression.constant1 = "";
+    expression.constant2 = "";
+    expression.operator = "";
+    expression.lastUpdated = "";
+    expression.result = "";
+}
+
 function compute(constant1, operator, constant2) {
     let num1 = +constant1;
     let num2 = +constant2;
