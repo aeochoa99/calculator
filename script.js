@@ -118,6 +118,9 @@ function updateOperator(key) {
 }
 
 function updateConstant1(key) {
+    if (expression.constant1.length >= 13) {
+        expression.constant1 = convertToScientificNotation(parseInt(expression.constant1));
+    }
     expression.constant1 += key;
     expression.lastUpdated = "constant1";
     inputOutputContainer.textContent = expression.constant1;
@@ -128,6 +131,9 @@ function setConstant1() {
 }
 
 function updateConstant2(key) {
+    if (expression.constant2.length >= 13) {
+        expression.constant2 = convertToScientificNotation(parseInt(expression.constant2));
+    }
     expression.constant2 += key;
     expression.lastUpdated = "constant2";
     inputOutputContainer.textContent = expression.constant2;
@@ -237,5 +243,16 @@ function compute(constant1, operator, constant2) {
         expression.constant1 = expression.result;
     }
 
+    if (expression.result.length > 13) {
+        let largeResult = convertToScientificNotation(result);
+        expression.result = String(largeResult);
+        inputOutputContainer.textContent = expression.result;
+        expression.constant1 = expression.result;
+    }
+
     disableEqualsKey();
+}
+
+function convertToScientificNotation(largeNum) {
+    return largeNum.toExponential(2);
 }
