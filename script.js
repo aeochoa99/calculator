@@ -4,13 +4,21 @@ inputKeys.forEach(key => {
         const keyInfo = key.textContent;
         if (isClearKey(keyInfo)) {
             clearExpression();
+            enableOperatorKeys();
         } else if (hasResult()) {
             if (checkIfOperator(keyInfo)) {
                 setConstant1();
                 updateOperator(keyInfo);
                 enableDecimalKey();
+                disableOperatorKeys();
                 expression.result = "";
                 expression.constant2 = "";
+            } else if (isDeleteKey(keyInfo)){
+                expression.lastUpdated = "constant1";
+                deleteFromLastUpdated();
+                expression.result = "";
+                expression.constant2 = "";
+                expression.operator = "";
             } else {
                 clearExpression();
                 updateConstant1(keyInfo);
@@ -70,8 +78,10 @@ function checkIfOperator(key) {
 function deleteFromLastUpdated() {
     if (expression.lastUpdated === "constant1") {
         expression.constant1 = expression.constant1.slice(0,-1);
+        inputOutputContainer.textContent = inputOutputContainer.textContent.slice(0,-1);
     } else {
         expression.constant2 = expression.constant2.slice(0,-1);
+        inputOutputContainer.textContent = inputOutputContainer.textContent.slice(0,-1);
     }
 }
 
@@ -198,17 +208,21 @@ function compute(constant1, operator, constant2) {
         result = num1 + num2;
         expression.result = String(result);
         inputOutputContainer.textContent = expression.result;
+        expression.constant1 = expression.result;
     } else if (operator === "-") {
         result = num1 - num2;
         expression.result = String(result);
         inputOutputContainer.textContent = expression.result;
+        expression.constant1 = expression.result;
     } else if (operator === "*") {
         result = num1 * num2;
         expression.result = String(result);
         inputOutputContainer.textContent = expression.result;
+        expression.constant1 = expression.result;
     } else if (operator === "/") {
         result = num1 / num2;
         expression.result = String(result);
         inputOutputContainer.textContent = expression.result;
+        expression.constant1 = expression.result;
     }
 }
