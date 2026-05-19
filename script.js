@@ -1,4 +1,45 @@
 const inputKeys = document.querySelectorAll(".key");
+inputKeys.forEach(key => {
+    key.addEventListener("click", () => {
+        const keyInfo = key.textContent;
+        if (hasResult()) {
+            if (checkIfOperator(keyInfo)) {
+                setConstant1();
+                updateOperator(keyInfo);
+                expression.result = "";
+                expression.constant2 = "";
+            } else {
+                clearExpression();
+                updateConstant1(keyInfo);
+            }
+        } else if (checkIfNumber(keyInfo)) {
+            if (isOperatorMissing()) {
+                updateConstant1(keyInfo);
+            } else {
+                updateConstant2(keyInfo);
+            }
+        } else if (checkIfOperator(keyInfo)) {
+            updateOperator(keyInfo);
+            decimalKey.disabled = false;
+        } else if (isDeleteKey(keyInfo)) {
+            deleteFromLastUpdated();
+        } else if (isDecimalKey(keyInfo)) {
+            if (getLastUpdated() === "constant1") {
+                updateConstant1(keyInfo);
+                disableDecimalKey();
+            } else {
+                updateConstant2(keyInfo);
+                disableDecimalKey();
+            }
+        } else if (isClearKey(keyInfo)) {
+            clearExpression();
+        } else if (isEqualsKey(keyInfo)) {
+            compute(expression.constant1, expression.operator, expression.constant2);
+        }
+    })
+})
+
+
 const decimalKey = document.querySelector("#decimal");
 const operatorKeys = document.querySelectorAll("#operator");
 
@@ -55,7 +96,7 @@ function hasResult() {
 }
 
 function updateOperator(key) {
-    expression.operator += key;
+    expression.operator = key;
 }
 
 function updateConstant1(key) {
