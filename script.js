@@ -96,6 +96,14 @@ function isEqualsKey(key) {
     }
 }
 
+function isClearKey(key) {
+    if (key === "CLEAR") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function getLastUpdated() {
     if (expression.lastUpdated === "constant1") {
         return "constant1";
