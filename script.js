@@ -26,8 +26,10 @@ inputKeys.forEach(key => {
         } else if (checkIfNumber(keyInfo)) {
             if (isOperatorMissing()) {
                 updateConstant1(keyInfo);
+                disableEqualsKey();
             } else {
                 updateConstant2(keyInfo);
+                enableEqualsKey();
             }
         } else if (checkIfOperator(keyInfo)) {
             updateOperator(keyInfo);
@@ -54,6 +56,7 @@ inputKeys.forEach(key => {
 
 const decimalKey = document.querySelector("#decimal");
 const operatorKeys = document.querySelectorAll("#operator");
+const equalKey = document.querySelector("#equal");
 
 const expression = {
     constant1: "",
@@ -199,6 +202,14 @@ function clearExpression() {
     inputOutputContainer.textContent = "";
 }
 
+function disableEqualsKey() {
+    equalKey.disabled = true;
+}
+
+function enableEqualsKey() {
+    equalKey.disabled = false;
+}
+
 function compute(constant1, operator, constant2) {
     let num1 = +constant1;
     let num2 = +constant2;
@@ -225,4 +236,6 @@ function compute(constant1, operator, constant2) {
         inputOutputContainer.textContent = expression.result;
         expression.constant1 = expression.result;
     }
+
+    disableEqualsKey();
 }
